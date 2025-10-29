@@ -1,0 +1,36 @@
+{
+  "tests": [
+    {
+      "name": "Register new referral",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "referrer_id": 1,
+        "referred_id": 2
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "message": "string",
+        "referral": {
+          "id": "number",
+          "referrer_id": "number",
+          "referred_id": "number",
+          "reward_amount": "string"
+        }
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get user referrals",
+      "method": "GET",
+      "path": "/?user_id=1",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "referrals": "array",
+        "total_earned": "number",
+        "total_count": "number"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

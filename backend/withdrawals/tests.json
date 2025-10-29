@@ -1,0 +1,36 @@
+{
+  "tests": [
+    {
+      "name": "Create withdrawal request",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "user_id": 1,
+        "amount": 500,
+        "card_number": "1234567890123456",
+        "bank_name": "Озон Банк"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "message": "string",
+        "transaction": {
+          "id": "number",
+          "user_id": "number",
+          "amount": "string",
+          "status": "string"
+        }
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get user withdrawals",
+      "method": "GET",
+      "path": "/?user_id=1",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "withdrawals": "array"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

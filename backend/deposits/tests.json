@@ -1,0 +1,35 @@
+{
+  "tests": [
+    {
+      "name": "Create deposit request",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "user_id": 1,
+        "amount": 1000,
+        "check_image_url": "https://example.com/check.jpg"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "message": "string",
+        "transaction": {
+          "id": "number",
+          "user_id": "number",
+          "amount": "string",
+          "status": "string"
+        }
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get user deposits",
+      "method": "GET",
+      "path": "/?user_id=1",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "deposits": "array"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
